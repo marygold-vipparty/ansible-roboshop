@@ -2,9 +2,9 @@
   hosts: local
   connection: local
   vars:
-    ami_id: ami-09c813fb71547fc4f
-    sg_id: sg-0c0eb8c98cd5511b9
-    zone_id: Z07265911CX6C2VZZ9NQZ
+    ami_id: "ami-09c813fb71547fc4f"
+    sg_id: "sg-0c0eb8c98cd5511b9"
+    zone_id: "Z07265911CX6C2VZZ9NQZ"
     domain_name: "nanipinky.shop"
     instances:
     - mongodb
