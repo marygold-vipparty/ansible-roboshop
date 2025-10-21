@@ -75,7 +75,7 @@
     when: catalogue_output.stdout | int < 0 
 
   - name: start and enable catalogue
-    ansible.module.service:
+    ansible.builtin.service:
       name: catalogue
       enabled: yes  
       state: started
