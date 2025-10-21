@@ -15,7 +15,7 @@
       executable: pip3.9
       name: "{{ item }}"
     loop:
-    - maven
+    - cryptography
     - PyMySql
 
   - name: create roboshop system shipping
