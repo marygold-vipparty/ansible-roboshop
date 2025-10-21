@@ -35,7 +35,7 @@
     ansible.builtin.unarchive:
       src: /tmp/catalogue.zip
       dest: /app
-      remote_scr: yes
+      remote_src: yes
 
   - name: install dependencies
     community.general.npm:
