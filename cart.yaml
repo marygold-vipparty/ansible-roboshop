@@ -26,7 +26,6 @@
       path: /app
       state: absent
 
-
   - name: create app directory
     ansible.builtin.file:
       state: directory
@@ -56,40 +55,6 @@
     ansible.builtin.copy:
       src: cart.service
       dest: /etc/systemd/system/cart.service
-
-  - name: copy mongo repo
-    ansible.builtin.copy:
-      src: mongo.repo
-      dest: /etc/yum.repos.d/mongo.repo
-
-  - name: install mongodb client
-    ansible.builtin.package:
-      name: mongodb-mongosh
-      state: present
-
-  - name: connnect to mongodb cart
-    ansible.builtin.command: mongosh mongodb.nanipinky.shop --quiet --eval "db.getMongo().getDBNames().indexOf('cart')"
-    register: cart_output
-
-  # - name: evaluate cart database
-  #   community.mongodb.mongodb_shell:
-  #     login_host: mongodb.nanipinky.shop
-  #     eval: db.getMongo().getDBNames().indexOf('cart')
-  #   register: cart_output
-
-  # - name: print cart output
-  #   ansible.builtin.debug:
-  #     msg: "{{ cart_output }}"
-
-  - name: load products into mongodb
-    ansible.builtin.shell: mongosh --host mongodb.nanipinky.shop </app/db/master-data.js
-    when: cart_output.stdout | int < 0 
-
-  # - name: start and enable cart
-  #   ansible.builtin.service:
-  #     name: cart
-  #     enabled: yes  
-  #     state: started
 
   - name: daemon reload enable and start
     ansible.builtin.systemd_service:
