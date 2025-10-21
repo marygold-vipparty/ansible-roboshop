@@ -10,6 +10,11 @@
     - maven
     - mysql
 
+  - name: install mysql python libraries
+    ansible.builtin.pip:
+      executable: pip3.9
+      name: PyMySql
+
   - name: create roboshop system shipping
     ansible.builtin.user:
       name: roboshop
@@ -50,7 +55,7 @@
       chdir: /app
 
   - name: move jar file
-    ansible.builtin.command: mv target/shipping1.0.jar shipping.jar
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
     args:
       chdir: /app 
   
